@@ -14,6 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Mega Super Top Magic Zero Two.png" />
     <Resource Include="Zero Two mega icon.ico" />
   </ItemGroup>

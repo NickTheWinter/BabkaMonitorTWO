@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BabkaMonitorTWO.DB_classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,11 +22,13 @@ namespace BabkaMonitorTWO
     /// </summary>
     public partial class MainWindow : Window
     {
+        ApplicationContext db;
         public MainWindow()
         {
             InitializeComponent();
             SourceInitialized += Window1_SourceInitialized;
-        }
+            db = new ApplicationContext();
+    }
 
         private void Window1_SourceInitialized(object sender, EventArgs e)
         {
