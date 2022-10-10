@@ -53,7 +53,7 @@
 
     </Window.Resources>
     <Window.Background>
-        <ImageBrush ImageSource="Mega Super Top Magic Zero Two.png"/>
+        <ImageBrush ImageSource="/image/Mega Super Top Magic Zero Two.png"/>
     </Window.Background>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -70,11 +70,11 @@
         </Grid.RowDefinitions>
         <TextBox x:Name="Name" Style="{DynamicResource TextBoxStyle1}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="Название источника" GotFocus="Name_GotFocus" LostFocus="Name_LostFocus"/>
         <TextBox x:Name="Address" Style="{DynamicResource TextBoxStyle1}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Адрес" LostFocus="Address_LostFocus" GotFocus="Address_GotFocus"/>
-        <Button FontSize="20" Grid.Row="4" Grid.Column="0" Content="Добавить" Style="{DynamicResource ButtonStyleDataGrid}" />
-        <Button FontSize="20" Grid.Row="4" Grid.Column="1" Content="Отменить" Style="{DynamicResource ButtonStyleDataGrid}" Click="Button_Click"/>
+        <Button x:Name="AddSouce" FontSize="20" Grid.Row="4" Grid.Column="0" Content="Добавить" Style="{DynamicResource ButtonStyleDataGrid}" Click="AddSouce_Click"/>
+        <Button x:Name="CancelSource" FontSize="20" Grid.Row="4" Grid.Column="1" Content="Отменить" Style="{DynamicResource ButtonStyleDataGrid}" Click="CancelSource_Click"/>
         <Border Grid.Row="0" Grid.Column="1" CornerRadius="100">
             <Border.Background >
-                <ImageBrush x:Name="logo" ImageSource="Zero Two mega logo.png" Stretch="UniformToFill"/>
+                <ImageBrush x:Name="logo" ImageSource="/image/Zero Two mega logo.png" Stretch="UniformToFill"/>
             </Border.Background>
         </Border>
 

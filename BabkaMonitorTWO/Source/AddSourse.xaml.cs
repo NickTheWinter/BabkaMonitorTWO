@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BabkaMonitorTWO.DB_classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,12 +20,16 @@ namespace BabkaMonitorTWO
     /// </summary>
     public partial class AddSourse : Window
     {
-        public AddSourse()
+        ApplicationContext db;
+        MainWindow mainWindow;
+        public AddSourse(ApplicationContext context,MainWindow _window)
         {
             InitializeComponent();
+            mainWindow = _window;
+            db = context;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void CancelSource_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
@@ -59,6 +64,14 @@ namespace BabkaMonitorTWO
             {
                 Address.Text = "";
             }
+        }
+
+        private void AddSouce_Click(object sender, RoutedEventArgs e)
+        {
+            Source source = new Source(Name.Text, Address.Text);
+            db.Sources.Add(source);
+            db.SaveChanges();
+            mainWindow.UpdateSource(true);
         }
     }
 }

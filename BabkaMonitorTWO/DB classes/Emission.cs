@@ -13,5 +13,16 @@ namespace BabkaMonitorTWO.DB_classes
         public string? Count { get; set; }
         public string? Text { get; set; }
         public DateTime? Date { get; set; }
+        public Emission(Source _source, string _count, string _text, DateTime date)
+        {
+            Source = _source;
+            Count = _count;
+            Text = _text;
+            Date = date;
+        }
+        public Emission()
+        {
+
+        }
     }
 }

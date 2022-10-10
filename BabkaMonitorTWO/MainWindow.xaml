@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BabkaMonitorTWO"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1080" Width="1920" SizeChanged="Window_SizeChanged" WindowState="Maximized" ResizeMode="CanResizeWithGrip" Icon="Zero Two mega icon.ico">
+        Title="MainWindow" Height="1080" Width="1920" SizeChanged="Window_SizeChanged" WindowState="Maximized" ResizeMode="CanResizeWithGrip" Icon="image/Zero Two mega icon.ico">
     <Window.Background>
-        <ImageBrush ImageSource="Zero Two top anime girl in the World.png"/>
+        <ImageBrush ImageSource="image/Zero Two top anime girl in the World.png"/>
     </Window.Background>
     <Window.Resources>
         <Style x:Key="FocusVisual">
@@ -108,7 +108,7 @@
 
             <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" CornerRadius="100" Width="200">
                 <Border.Background>
-                    <ImageBrush x:Name="logo" ImageSource="Zero Two mega logo.png" Stretch="UniformToFill"/>
+                    <ImageBrush x:Name="logo" ImageSource="image/Zero Two mega logo.png" Stretch="UniformToFill"/>
                 </Border.Background>
             </Border>
         </Grid>
@@ -128,7 +128,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button Style="{DynamicResource ButtonStyleDataGrid}" Grid.Row="0" Content="Добавить выбросы" Height="84" Margin="20,10,20,0" VerticalAlignment="Top" Click="Button_Click"/>
+            <Button Style="{DynamicResource ButtonStyleDataGrid}" Grid.Row="0" Content="Добавить выбросы" Height="84" Margin="20,10,20,0" VerticalAlignment="Top" Click="Button_Click_1" />
             <Button Style="{DynamicResource ButtonStyleDataGrid}" Grid.Row="1" Content="Удалить выбросы"/>
             <Button Style="{DynamicResource ButtonStyleDataGrid}" Grid.Row="2" Content="Редактировать выбросы"/>
         </Grid>
@@ -143,13 +143,163 @@
             <Button Style="{DynamicResource ButtonStyleDataGrid}" FontSize="34" Grid.Column="2" Content="Макс. выбросы"/>
         </Grid>
         <Label Style="{DynamicResource LabelStyle}" Content="Источник выбросов" Grid.Row="1"/>
-        <DataGrid Grid.Row="2">
-
+        <DataGrid x:Name="ListSources" Grid.Row="2" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="White"/>
+                            <Setter Property="BorderThickness" Value="2"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="DataGridColumnHeader">
+                                        <Border Background="Transparent" BorderThickness="0">
+                                            <Border x:Name="border"
+                              BorderBrush="White"
+                              BorderThickness="2"
+                              Background="#0D0D0D"
+                              CornerRadius="5 0 0 0">
+                                                <ContentPresenter HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Address" Binding="{Binding Address}" Width="*">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="#0D0D0D"/>
+                            <Setter Property="BorderBrush" Value="White"/>
+                            <Setter Property="BorderThickness" Value="2"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="DataGridColumnHeader">
+                                        <Border Background="Transparent" BorderThickness="0">
+                                            <Border x:Name="border"
+                              BorderBrush="White"
+                              BorderThickness="2"
+                              Background="#0D0D0D"
+                              CornerRadius="0 5 0 0">
+                                                <ContentPresenter HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                </DataGrid.Columns>
         </DataGrid>
 
         <Label Style="{DynamicResource LabelStyle}" Content="Выбросы" Grid.Row="3"/>
-        <DataGrid Grid.Row="4">
-
+        <DataGrid x:Name="ListEmissions" Grid.Row="4" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Source name" Binding="{Binding Source.Name}" Width="*">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="White"/>
+                            <Setter Property="BorderThickness" Value="2"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="DataGridColumnHeader">
+                                        <Border Background="Transparent" BorderThickness="0">
+                                            <Border x:Name="border"
+                              BorderBrush="White"
+                              BorderThickness="2"
+                              Background="#0D0D0D"
+                              CornerRadius="5 0 0 0">
+                                                <ContentPresenter HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Count" Binding="{Binding Count}" Width="*">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="White"/>
+                            <Setter Property="BorderThickness" Value="2"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="DataGridColumnHeader">
+                                        <Border Background="Transparent" BorderThickness="0">
+                                            <Border x:Name="border"
+                              BorderBrush="White"
+                              BorderThickness="2"
+                              Background="#0D0D0D">
+                                                <ContentPresenter HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Text" Binding="{Binding Text}" Width="*">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="White"/>
+                            <Setter Property="BorderThickness" Value="2"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="DataGridColumnHeader">
+                                        <Border Background="Transparent" BorderThickness="0">
+                                            <Border x:Name="border"
+                              BorderBrush="White"
+                              BorderThickness="2"
+                              Background="#0D0D0D">
+                                                <ContentPresenter HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="*">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="#0D0D0D"/>
+                            <Setter Property="BorderBrush" Value="White"/>
+                            <Setter Property="BorderThickness" Value="2"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="DataGridColumnHeader">
+                                        <Border Background="Transparent" BorderThickness="0">
+                                            <Border x:Name="border"
+                              BorderBrush="White"
+                              BorderThickness="2"
+                              Background="#0D0D0D"
+                              CornerRadius="0 5 0 0">
+                                                <ContentPresenter HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 </Window>

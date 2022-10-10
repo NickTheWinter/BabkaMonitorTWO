@@ -23,13 +23,44 @@ namespace BabkaMonitorTWO
     public partial class MainWindow : Window
     {
         ApplicationContext db;
+        List<Source> listSources = new List<Source>();
+        List<Emission> listEmissions = new List<Emission>();
         public MainWindow()
         {
             InitializeComponent();
             SourceInitialized += Window1_SourceInitialized;
             db = new ApplicationContext();
+            UpdateSource(false);
+            listEmissions = db.Emissions.ToList();
+            ListEmissions.ItemsSource = listEmissions;
     }
 
+        public void UpdateSource(bool last)
+        {
+            if (!last)
+            {
+                listSources = db.Sources.ToList();
+                ListSources.ItemsSource = listSources;
+            }
+            else
+            {
+                listSources.Add(db.Sources.OrderBy(t => t.Id).Last());
+                ListSources.Items.Refresh();
+            }
+        }
+        public void UpdateEmission(bool last)
+        {
+            if (!last)
+            {
+                listEmissions = db.Emissions.ToList();
+                ListEmissions.ItemsSource = listEmissions;
+            }
+            else
+            {
+                listEmissions.Add(db.Emissions.OrderBy(t => t.Id).Last());
+                ListEmissions.Items.Refresh();
+            }
+        }
         private void Window1_SourceInitialized(object sender, EventArgs e)
         {
             WindowInteropHelper helper = new WindowInteropHelper(this);
@@ -63,8 +94,14 @@ namespace BabkaMonitorTWO
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AddSourse source = new AddSourse();
+            AddSourse source = new AddSourse(db,this);
             source.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            AddEmission emission = new AddEmission(db, this)  ;
+            emission.Show();
         }
     }
 }

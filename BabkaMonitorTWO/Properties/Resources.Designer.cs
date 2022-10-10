@@ -63,6 +63,26 @@ namespace BabkaMonitorTWO.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        internal static byte[] icon_calendar {
+            get {
+                object obj = ResourceManager.GetObject("icon_calendar", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Mega_Super_Top_Magic_Zero_Two {
+            get {
+                object obj = ResourceManager.GetObject("Mega Super Top Magic Zero Two", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         internal static byte[] Zero_Two_mega_icon {
             get {
                 object obj = ResourceManager.GetObject("Zero Two mega icon", resourceCulture);
@@ -76,6 +96,16 @@ namespace BabkaMonitorTWO.Properties {
         internal static byte[] Zero_Two_mega_logo {
             get {
                 object obj = ResourceManager.GetObject("Zero Two mega logo", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Zero_Two_top_anime_girl_in_the_World {
+            get {
+                object obj = ResourceManager.GetObject("Zero Two top anime girl in the World", resourceCulture);
                 return ((byte[])(obj));
             }
         }

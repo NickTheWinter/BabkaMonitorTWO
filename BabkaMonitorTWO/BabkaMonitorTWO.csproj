@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="image\icon_calendar.png" />
     <None Remove="Mega Super Top Magic Zero Two.png" />
     <None Remove="Zero Two mega icon.ico" />
     <None Remove="Zero Two mega logo.png" />
@@ -19,13 +20,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Mega Super Top Magic Zero Two.png" />
-    <Resource Include="Zero Two mega icon.ico" />
-    <Resource Include="Zero Two mega logo.png" />
+    <Resource Include="image\icon_calendar.png" />
+    <Resource Include="image\Mega Super Top Magic Zero Two.png" />
+    <Resource Include="image\Zero Two mega icon.ico" />
+    <Resource Include="image\Zero Two mega logo.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Zero Two top anime girl in the World.png" />
+    <Resource Include="image\Zero Two top anime girl in the World.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,6 +43,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Emissions\AddEmission.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
   </ItemGroup>
 
 </Project>
