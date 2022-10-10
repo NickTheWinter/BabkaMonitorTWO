@@ -10,12 +10,14 @@
   <ItemGroup>
     <None Remove="Mega Super Top Magic Zero Two.png" />
     <None Remove="Zero Two mega icon.ico" />
+    <None Remove="Zero Two mega logo.png" />
     <None Remove="Zero Two top anime girl in the World.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Mega Super Top Magic Zero Two.png" />
     <Resource Include="Zero Two mega icon.ico" />
+    <Resource Include="Zero Two mega logo.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -69,5 +69,15 @@ namespace BabkaMonitorTWO.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Zero_Two_mega_logo {
+            get {
+                object obj = ResourceManager.GetObject("Zero Two mega logo", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
