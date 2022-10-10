@@ -28,5 +28,37 @@ namespace BabkaMonitorTWO
         {
             this.Close();
         }
+
+        private void Name_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (Name.Text == "Название источника")
+            {
+                Name.Text = "";
+            }
+        }
+
+        private void Name_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (Name.Text == "")
+            {
+                Name.Text = "Название источника";
+            }
+        }
+
+        private void Address_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (Address.Text == "")
+            {
+                Address.Text = "Адрес";
+            }
+        }
+
+        private void Address_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (Address.Text == "Адрес")
+            {
+                Address.Text = "";
+            }
+        }
     }
 }

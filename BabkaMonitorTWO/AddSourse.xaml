@@ -49,6 +49,8 @@
                 </MultiTrigger>
             </Style.Triggers>
         </Style>
+        <Style x:Key="LogoStyle" TargetType="{x:Type Image}"/>
+
     </Window.Resources>
     <Window.Background>
         <ImageBrush ImageSource="Mega Super Top Magic Zero Two.png"/>
@@ -59,16 +61,22 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2.5*"/>
+            <RowDefinition Height="2.2*"/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition Height="0.2*"/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox x:Name="Name" Style="{DynamicResource TextBoxStyle1}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="Название источника"/>
-        <TextBox x:Name="Address" Style="{DynamicResource TextBoxStyle1}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Адрес"/>
+        <TextBox x:Name="Name" Style="{DynamicResource TextBoxStyle1}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="Название источника" GotFocus="Name_GotFocus" LostFocus="Name_LostFocus"/>
+        <TextBox x:Name="Address" Style="{DynamicResource TextBoxStyle1}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Адрес" LostFocus="Address_LostFocus" GotFocus="Address_GotFocus"/>
         <Button FontSize="20" Grid.Row="4" Grid.Column="0" Content="Добавить" Style="{DynamicResource ButtonStyleDataGrid}" />
         <Button FontSize="20" Grid.Row="4" Grid.Column="1" Content="Отменить" Style="{DynamicResource ButtonStyleDataGrid}" Click="Button_Click"/>
+        <Border Grid.Row="0" Grid.Column="1" CornerRadius="100">
+            <Border.Background >
+                <ImageBrush x:Name="logo" ImageSource="Zero Two mega logo.png" Stretch="UniformToFill"/>
+            </Border.Background>
+        </Border>
+
     </Grid>
 </Window>
