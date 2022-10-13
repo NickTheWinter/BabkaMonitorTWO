@@ -34,22 +34,6 @@ namespace BabkaMonitorTWO
             this.Close();
         }
 
-        private void SourceName_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (SourceName.Text == "Название источника")
-            {
-                SourceName.Text = "";
-            }
-        }
-
-        private void SourceName_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (SourceName.Text == "")
-            {
-                SourceName.Text = "Название источника";
-            }
-        }
-
         private void Count_LostFocus(object sender, RoutedEventArgs e)
         {
             if (Count.Text == "")
@@ -68,11 +52,11 @@ namespace BabkaMonitorTWO
 
         private void AddEmissionn_Click(object sender, RoutedEventArgs e)
         {
-            Source source = db.Sources.Where(x => x.Name == SourceName.Text).FirstOrDefault();
-            Emission emission = new Emission(source, Count.Text, Text.Text, DateTime.Parse(Date.Text));
-            db.Emissions.Add(emission);
-            db.SaveChanges();
-            mainWindow.UpdateEmission(true);
+            //Source source = db.Sources.Where(x => x.Name == SourceName.Text).FirstOrDefault();
+            //Emission emission = new Emission(source, Count.Text, Text.Text, DateTime.Parse(Date.Text));
+            //db.Emissions.Add(emission);
+            //db.SaveChanges();
+            //mainWindow.UpdateEmission(true);
         }
 
         private void Text_GotFocus(object sender, RoutedEventArgs e)

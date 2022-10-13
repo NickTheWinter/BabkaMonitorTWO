@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="image\arrow.png" />
     <None Remove="image\icon_calendar.png" />
     <None Remove="Mega Super Top Magic Zero Two.png" />
     <None Remove="Zero Two mega icon.ico" />
@@ -20,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="image\arrow.png" />
     <Resource Include="image\icon_calendar.png" />
     <Resource Include="image\Mega Super Top Magic Zero Two.png" />
     <Resource Include="image\Zero Two mega icon.ico" />
