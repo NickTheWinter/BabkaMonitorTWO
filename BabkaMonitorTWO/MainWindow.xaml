@@ -81,6 +81,28 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <SolidColorBrush x:Key="Menu.Static.Background" Color="#FFF0F0F0"/>
+        <Style x:Key="MenuStyle1" TargetType="{x:Type Menu}">
+            <Setter Property="Background" Value="#BE60BF"/>
+            <Setter Property="FontFamily" Value="{DynamicResource {x:Static SystemFonts.MenuFontFamilyKey}}"/>
+            <Setter Property="FontSize" Value="32"/>
+            <Setter Property="FontStyle" Value="{DynamicResource {x:Static SystemFonts.MenuFontStyleKey}}"/>
+            <Setter Property="FontWeight" Value="{DynamicResource {x:Static SystemFonts.MenuFontWeightKey}}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}"/>
+            <Setter Property="Margin" Value="10 5 5 0"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Height" Value="0.5in"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Menu}">
+                        <Border BorderThickness="1" Background="#BE60BF">
+                            <StackPanel ClipToBounds="True" Orientation="Horizontal" IsItemsHost="True" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -96,9 +118,27 @@
             <RowDefinition Height="0.4*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
-            <Button Style="{DynamicResource ButtonStyleMenu}" Content="Источник"/>
-            <Button Style="{DynamicResource ButtonStyleMenu}" Content="Выбросы"/>
-            <Button Style="{DynamicResource ButtonStyleMenu}" Content="Расчет"/>
+            <Menu Style="{DynamicResource MenuStyle1}">
+                <MenuItem Header="Источник">
+                    <MenuItem Header="Добавить"/>
+                    <MenuItem Header="Удалить"/>
+                    <MenuItem Header="Редактировать"/>
+                </MenuItem>
+            </Menu>
+            <Menu Style="{DynamicResource MenuStyle1}">
+                <MenuItem Header="Выбросы">
+                    <MenuItem Header="Добавить"/>
+                    <MenuItem Header="Удалить"/>
+                    <MenuItem Header="Редактировать"/>
+                </MenuItem>
+            </Menu>
+            <Menu Style="{DynamicResource MenuStyle1}">
+                <MenuItem Header="Расчет">
+                    <MenuItem Header="Добавить"/>
+                    <MenuItem Header="Удалить"/>
+                    <MenuItem Header="Редактировать"/>
+                </MenuItem>
+            </Menu>
         </StackPanel>
         <Grid Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
@@ -195,7 +235,7 @@
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                </DataGrid.Columns>
+            </DataGrid.Columns>
         </DataGrid>
 
         <Label Style="{DynamicResource LabelStyle}" Content="Выбросы" Grid.Row="3"/>
