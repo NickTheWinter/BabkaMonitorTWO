@@ -34,22 +34,6 @@ namespace BabkaMonitorTWO
             this.Close();
         }
 
-        private void SourceName_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (SourceName.Text == "Название источника")
-            {
-                SourceName.Text = "";
-            }
-        }
-
-        private void SourceName_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (SourceName.Text == "")
-            {
-                SourceName.Text = "Название источника";
-            }
-        }
-
         private void Count_LostFocus(object sender, RoutedEventArgs e)
         {
             if (Count.Text == "")
