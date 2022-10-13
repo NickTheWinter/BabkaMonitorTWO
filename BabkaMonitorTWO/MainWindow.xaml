@@ -134,9 +134,9 @@
             </Menu>
             <Menu Style="{DynamicResource MenuStyle1}">
                 <MenuItem Header="Расчет">
-                    <MenuItem Header="Добавить"/>
-                    <MenuItem Header="Удалить"/>
-                    <MenuItem Header="Редактировать"/>
+                    <MenuItem Header="Мин. выбросы"/>
+                    <MenuItem Header="Средние выбросы"/>
+                    <MenuItem Header="Макс. выбросы"/>
                 </MenuItem>
             </Menu>
         </StackPanel>
