@@ -68,7 +68,7 @@ namespace BabkaMonitorTWO
 
         private void AddEmissionn_Click(object sender, RoutedEventArgs e)
         {
-            Source source = db.Sources.Where(x => x.Name == SourceName.Text).FirstOrDefault();
+            BabkaMonitorTWO.DB_classes.Source source = db.Sources.Where(x => x.Name == SourceName.Text).FirstOrDefault();
             Emission emission = new Emission(source, Count.Text, Text.Text, DateTime.Parse(Date.Text));
             db.Emissions.Add(emission);
             db.SaveChanges();

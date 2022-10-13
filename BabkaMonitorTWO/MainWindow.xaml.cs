@@ -1,4 +1,5 @@
 ﻿using BabkaMonitorTWO.DB_classes;
+using BabkaMonitorTWO.Source;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace BabkaMonitorTWO
     public partial class MainWindow : Window
     {
         ApplicationContext db;
-        List<Source> listSources = new List<Source>();
+        List<BabkaMonitorTWO.DB_classes.Source> listSources = new List<BabkaMonitorTWO.DB_classes.Source>();
         List<Emission> listEmissions = new List<Emission>();
         public MainWindow()
         {
@@ -102,6 +103,12 @@ namespace BabkaMonitorTWO
         {
             AddEmission emission = new AddEmission(db, this)  ;
             emission.Show();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            KillSource killSource = new KillSource(db, this) ;
+            killSource.Show();
         }
     }
 }

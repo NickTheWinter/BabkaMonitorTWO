@@ -159,7 +159,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Button Style="{DynamicResource ButtonStyleDataGrid}" Grid.Row="0" Content="Добавить источник" Click="Button_Click"/>
-            <Button Style="{DynamicResource ButtonStyleDataGrid}" Grid.Row="1" Content="Удалить источник"/>
+            <Button Style="{DynamicResource ButtonStyleDataGrid}" Grid.Row="1" Content="Удалить источник" Click="Button_Click_2"/>
             <Button Style="{DynamicResource ButtonStyleDataGrid}" Grid.Row="2" Content="Редактировать источник"/>
         </Grid>
         <Grid Grid.Column="1" Grid.Row="4">
@@ -325,11 +325,7 @@
                                 <Setter.Value>
                                     <ControlTemplate TargetType="DataGridColumnHeader">
                                         <Border Background="Transparent" BorderThickness="0">
-                                            <Border x:Name="border"
-                              BorderBrush="White"
-                              BorderThickness="2"
-                              Background="#0D0D0D"
-                              CornerRadius="0 5 0 0">
+                                            <Border x:Name="border" BorderBrush="White" BorderThickness="2" Background="#0D0D0D" CornerRadius="0 5 0 0">
                                                 <ContentPresenter HorizontalAlignment="Center"/>
                                             </Border>
                                         </Border>

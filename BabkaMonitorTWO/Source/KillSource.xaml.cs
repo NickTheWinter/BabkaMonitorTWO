@@ -13,16 +13,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace BabkaMonitorTWO
+namespace BabkaMonitorTWO.Source
 {
     /// <summary>
-    /// Логика взаимодействия для AddSourse.xaml
+    /// Логика взаимодействия для KillSource.xaml
     /// </summary>
-    public partial class AddSourse : Window
+    public partial class KillSource : Window
     {
         ApplicationContext db;
         MainWindow mainWindow;
-        public AddSourse(ApplicationContext context,MainWindow _window)
+        public KillSource(ApplicationContext context, MainWindow _window)
         {
             InitializeComponent();
             mainWindow = _window;
@@ -32,6 +32,14 @@ namespace BabkaMonitorTWO
         private void CancelSource_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void KillSouce_Click(object sender, RoutedEventArgs e)
+        {
+            BabkaMonitorTWO.DB_classes.Source source = db.Sources.Where(x => x.Name == Name.Text).FirstOrDefault();
+            db.Sources.Remove(source);
+            db.SaveChanges();
+            mainWindow.UpdateSource(false);
         }
 
         private void Name_GotFocus(object sender, RoutedEventArgs e)
@@ -48,30 +56,6 @@ namespace BabkaMonitorTWO
             {
                 Name.Text = "Название источника";
             }
-        }
-
-        private void Address_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (Address.Text == "")
-            {
-                Address.Text = "Адрес";
-            }
-        }
-
-        private void Address_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (Address.Text == "Адрес")
-            {
-                Address.Text = "";
-            }
-        }
-
-        private void AddSouce_Click(object sender, RoutedEventArgs e)
-        {
-            BabkaMonitorTWO.DB_classes.Source source = new BabkaMonitorTWO.DB_classes.Source(Name.Text, Address.Text);
-            db.Sources.Add(source);
-            db.SaveChanges();
-            mainWindow.UpdateSource(true);
         }
     }
 }
