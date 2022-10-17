@@ -27,6 +27,10 @@ namespace BabkaMonitorTWO
             InitializeComponent();
             mainWindow = _window;
             db = context;
+            foreach (var item in db.Sources)
+            {
+                ComboBox_location.Items.Add(item.Name);
+            }
         }
 
         private void CancelEmission_Click(object sender, RoutedEventArgs e)
@@ -38,13 +42,13 @@ namespace BabkaMonitorTWO
         {
             if (Count.Text == "")
             {
-                Count.Text = "Адрес";
+                Count.Text = "Количество";
             }
         }
 
         private void Count_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (Count.Text == "Адрес")
+            if (Count.Text == "Количество")
             {
                 Count.Text = "";
             }
@@ -52,7 +56,7 @@ namespace BabkaMonitorTWO
 
         private void AddEmissionn_Click(object sender, RoutedEventArgs e)
         {
-            BabkaMonitorTWO.DB_classes.Source source = db.Sources.Where(x => x.Name == SourceName.Text).FirstOrDefault();
+            DB_classes.Source source = db.Sources.Where(x => x.Name == ComboBox_location.SelectedValue).FirstOrDefault();
             Emission emission = new Emission(source, Count.Text, Text.Text, DateTime.Parse(Date.Text));
             db.Emissions.Add(emission);
             db.SaveChanges();
@@ -74,5 +78,6 @@ namespace BabkaMonitorTWO
                 Text.Text = "Текст";
             }
         }
+
     }
 }

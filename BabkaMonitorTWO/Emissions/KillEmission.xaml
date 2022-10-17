@@ -16,7 +16,7 @@
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="Margin" Value="10 20"/>
-            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontSize" Value="20"/>
             <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
             <Setter Property="HorizontalContentAlignment" Value="Left"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -49,10 +49,86 @@
                 </MultiTrigger>
             </Style.Triggers>
         </Style>
+        <Style x:Key="TextBoxStyleDate" TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="#262626"/>
+            <Setter Property="BorderBrush" Value="#606060"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="FontSize" Value="50"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" CornerRadius="5" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
         <Style x:Key="LogoStyle" TargetType="{x:Type Image}"/>
+        <Style x:Key="DatePickerStyle1" TargetType="{x:Type DatePicker}">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="IsTodayHighlighted" Value="True"/>
+            <Setter Property="SelectedDateFormat" Value="Short"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="DatePicker">
+                        <Border BorderThickness="0">
+                            <Grid x:Name="PART_Root" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="0.8in"/>
+                                </Grid.ColumnDefinitions>
+                                <Button x:Name="PART_Button" Grid.Column="1" Focusable="False" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Grid.Row="0" VerticalAlignment="Center">
+                                    <Image Source="/image/icon_calendar.png" Stretch ="Uniform" />
+                                </Button>
+                                <DatePickerTextBox x:Name="PART_TextBox" Text="00.00.0000" Background="Transparent" Foreground="White" Style="{DynamicResource TextBoxStyleDate}" BorderThickness="0" Grid.Column="0"  HorizontalContentAlignment="Left" Grid.Row="0" VerticalContentAlignment="Center"/>
+                                <Grid x:Name="PART_DisabledVisual" Grid.Column="0" Grid.ColumnSpan="2" IsHitTestVisible="False" Opacity="0" Grid.Row="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Popup x:Name="PART_Popup" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_TextBox}" StaysOpen="False"/>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="TextBox.Static.Background" Color="#FFFFFFFF"/>
+
     </Window.Resources>
     <Window.Background>
-        <ImageBrush ImageSource="/image/Mega Super Top Magic Zero Two.png" Stretch="UniformToFill"/>
+        <ImageBrush ImageSource="/image/Mega Super Top Magic Zero Two.png"/>
     </Window.Background>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -60,19 +136,23 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="2.4*"/>
             <RowDefinition/>
-            <RowDefinition Height="0.5*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox x:Name="Name" Style="{DynamicResource TextBoxStyle1}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="Название выброса" GotFocus="Name_GotFocus" LostFocus="Name_LostFocus"/>
-        <Button x:Name="KillEmission" FontSize="20" Grid.Row="3" Grid.Column="0" Content="Удалить" Style="{DynamicResource ButtonStyleDataGrid}" Click="KillEmission_Click"/>
-        <Button x:Name="CancelEmission" FontSize="20" Grid.Row="3" Grid.Column="1" Content="Отменить" Style="{DynamicResource ButtonStyleDataGrid}" Click="CancelEmission_Click"/>
-        <Border Grid.Row="0" Grid.Column="1" CornerRadius="100">
-            <Border.Background >
-                <ImageBrush x:Name="logo" ImageSource="/image/Zero Two mega logo.png" Stretch="UniformToFill"/>
-            </Border.Background>
-        </Border>
-
+        <ComboBox Background="#8C274C" Opacity="0.5" x:Name="ComboBox_source" Margin="10 20"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  IsReadOnly="True" OpacityMask="#FF8C274C"/>
+        <ComboBox Background="#8C274C" Opacity="0.5" x:Name="ComboBox_count" Margin="10 20"  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  IsReadOnly="True" OpacityMask="#FF8C274C"/>
+        <ComboBox Background="#8C274C" Opacity="0.5" x:Name="ComboBox_text" Margin="10 20"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  IsReadOnly="True" OpacityMask="#FF8C274C"/>
+        <ComboBox Background="#8C274C" Opacity="0.5" x:Name="ComboBox_date" Margin="10 20"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  IsReadOnly="True" OpacityMask="#FF8C274C"/>
+        <Ellipse Grid.ColumnSpan="2" Width="2in">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="/image/Zero Two mega logo.png"/>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Button x:Name="KillEmissionn" FontSize="20" Grid.Row="6" Grid.Column="0" Content="Удалить" Style="{DynamicResource ButtonStyleDataGrid}" Click="KillEmissionn_Click"/>
+        <Button x:Name="CancelEmission" FontSize="20" Grid.Row="6" Grid.Column="1" Content="Отменить" Style="{DynamicResource ButtonStyleDataGrid}" Click="CancelEmission_Click"/>
     </Grid>
 </Window>

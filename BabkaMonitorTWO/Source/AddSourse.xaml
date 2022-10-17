@@ -72,11 +72,11 @@
         <TextBox x:Name="Address" Style="{DynamicResource TextBoxStyle1}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Адрес" LostFocus="Address_LostFocus" GotFocus="Address_GotFocus"/>
         <Button x:Name="AddSouce" FontSize="20" Grid.Row="4" Grid.Column="0" Content="Добавить" Style="{DynamicResource ButtonStyleDataGrid}" Click="AddSouce_Click"/>
         <Button x:Name="CancelSource" FontSize="20" Grid.Row="4" Grid.Column="1" Content="Отменить" Style="{DynamicResource ButtonStyleDataGrid}" Click="CancelSource_Click"/>
-        <Border Grid.Row="0" Grid.Column="1" CornerRadius="100">
-            <Border.Background >
-                <ImageBrush x:Name="logo" ImageSource="/image/Zero Two mega logo.png" Stretch="UniformToFill"/>
-            </Border.Background>
-        </Border>
+        <Ellipse Grid.ColumnSpan="2" Width="1.9in">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="/image/Zero Two mega logo.png"/>
+            </Ellipse.Fill>
+        </Ellipse>
 
     </Grid>
 </Window>

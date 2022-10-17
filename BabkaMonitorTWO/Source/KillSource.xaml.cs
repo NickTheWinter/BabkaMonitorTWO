@@ -27,6 +27,10 @@ namespace BabkaMonitorTWO.Source
             InitializeComponent();
             mainWindow = _window;
             db = context;
+            foreach (var item in db.Sources)
+            {
+                Name.Items.Add(item.Name);
+            }
         }
 
         private void CancelSource_Click(object sender, RoutedEventArgs e)
@@ -36,26 +40,10 @@ namespace BabkaMonitorTWO.Source
 
         private void KillSouce_Click(object sender, RoutedEventArgs e)
         {
-            BabkaMonitorTWO.DB_classes.Source source = db.Sources.Where(x => x.Name == Name.Text).FirstOrDefault();
+            DB_classes.Source source = db.Sources.Where(x => x.Name == Name.SelectedValue).FirstOrDefault();
             db.Sources.Remove(source);
             db.SaveChanges();
             mainWindow.UpdateSource(false);
-        }
-
-        private void Name_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (Name.Text == "Название источника")
-            {
-                Name.Text = "";
-            }
-        }
-
-        private void Name_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (Name.Text == "")
-            {
-                Name.Text = "Название источника";
-            }
         }
     }
 }

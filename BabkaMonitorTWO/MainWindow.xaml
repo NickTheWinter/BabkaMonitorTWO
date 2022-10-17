@@ -103,6 +103,123 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="{ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle, TypeInTargetAssembly={x:Type DataGrid}}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Rectangle x:Name="Border" Fill="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" SnapsToDevicePixels="True"/>
+                            <Polygon x:Name="Arrow" Fill="Black" HorizontalAlignment="Right" Margin="8,8,3,3" Opacity="0.15" Points="0,10 10,10 10,0" Stretch="Uniform" VerticalAlignment="Bottom"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Stroke" TargetName="Border" Value="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Fill" TargetName="Border" Value="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Visibility" TargetName="Arrow" Value="Collapsed"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="DataGridStyle1" TargetType="{x:Type DataGrid}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="white"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Margin" Value="15 0 0 0 "/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="RowHeaderWidth" Value="0" />
+            <Setter Property="HorizontalScrollBarVisibility" Value="Disabled" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGrid}">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5" BorderBrush="{x:Null}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="DG_ScrollViewer" Focusable="false">
+                                <ScrollViewer.Template>
+                                    <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Button Command="{x:Static DataGrid.SelectAllCommand}" Focusable="false" Style="{DynamicResource {ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle, TypeInTargetAssembly={x:Type DataGrid}}}" Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.All}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
+                                            <DataGridColumnHeadersPresenter x:Name="PART_ColumnHeadersPresenter" Grid.Column="1" Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Column}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
+                                            <ScrollContentPresenter x:Name="PART_ScrollContentPresenter" CanContentScroll="{TemplateBinding CanContentScroll}" Grid.ColumnSpan="2" Grid.Row="1"/>
+                                            <ScrollBar Style="{DynamicResource ResourceKey=ScrollStyle}" x:Name="PART_VerticalScrollBar" Grid.Column="2" Maximum="{TemplateBinding ScrollableHeight}" Orientation="Vertical" Grid.Row="1" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"/>
+                                            <Grid Grid.Column="1" Grid.Row="2">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="{Binding NonFrozenColumnsViewportHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <ScrollBar x:Name="PART_HorizontalScrollBar" Grid.Column="1" Maximum="{TemplateBinding ScrollableWidth}" Orientation="Horizontal" Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportWidth}" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"/>
+                                            </Grid>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </ScrollViewer.Template>
+                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsGrouping" Value="true"/>
+                        <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                </MultiTrigger>
+                <Trigger Property="IsEnabled" Value="True">
+                    <Trigger.Setters>
+                        <Setter Property="Foreground" Value="White"/>
+                    </Trigger.Setters>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ScrollBarThumbStyle" TargetType="{x:Type Thumb}">
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Rectangle Fill="#FF853481" RadiusY="5" RadiusX="10"></Rectangle>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <ControlTemplate x:Key="VerticalScrollBar" TargetType="{x:Type ScrollBar}">
+            <Grid>
+                <Track Name="PART_Track"
+                   IsDirectionReversed="True">
+                    <Track.Thumb>
+                        <Thumb Style="{StaticResource ScrollBarThumbStyle}">
+                        </Thumb>
+                    </Track.Thumb>
+                </Track>
+            </Grid>
+        </ControlTemplate>
+
+        <Style x:Key="ScrollStyle" TargetType="{x:Type ScrollBar}">
+            <Setter Property="Template" Value="{StaticResource VerticalScrollBar}"/>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -160,7 +277,7 @@
             </Grid.RowDefinitions>
             <Button Style="{DynamicResource ButtonStyleDataGrid}" Grid.Row="0" Content="Добавить источник" Click="Button_Click"/>
             <Button Style="{DynamicResource ButtonStyleDataGrid}" Grid.Row="1" Content="Удалить источник" Click="Button_Click_2"/>
-            <Button Style="{DynamicResource ButtonStyleDataGrid}" Grid.Row="2" Content="Редактировать источник"/>
+            <Button Style="{DynamicResource ButtonStyleDataGrid}" Grid.Row="2" Content="Редактировать источник" Click="Button_Click_3"/>
         </Grid>
         <Grid Grid.Column="1" Grid.Row="4">
             <Grid.RowDefinitions>
@@ -169,8 +286,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Button Style="{DynamicResource ButtonStyleDataGrid}" Grid.Row="0" Content="Добавить выбросы" Height="84" Margin="20,10,20,0" VerticalAlignment="Top" Click="Button_Click_1" />
-            <Button Style="{DynamicResource ButtonStyleDataGrid}" Grid.Row="1" Content="Удалить выбросы"/>
-            <Button Style="{DynamicResource ButtonStyleDataGrid}" Grid.Row="2" Content="Редактировать выбросы"/>
+            <Button Style="{DynamicResource ButtonStyleDataGrid}" Grid.Row="1" Content="Удалить выбросы" Click="Button_Click_4"/>
         </Grid>
         <Grid Grid.Row="5">
             <Grid.ColumnDefinitions>
@@ -183,15 +299,15 @@
             <Button Style="{DynamicResource ButtonStyleDataGrid}" FontSize="34" Grid.Column="2" Content="Макс. выбросы"/>
         </Grid>
         <Label Style="{DynamicResource LabelStyle}" Content="Источник выбросов" Grid.Row="1"/>
-        <DataGrid x:Name="ListSources" Grid.Row="2" AutoGenerateColumns="False">
+        <DataGrid Style="{DynamicResource DataGridStyle1}" x:Name="ListSources" Grid.Row="2" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*">
+                <DataGridTextColumn Header="Имя" Binding="{Binding Name}" Width="*">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="Background" Value="Transparent"/>
                             <Setter Property="BorderBrush" Value="White"/>
                             <Setter Property="BorderThickness" Value="2"/>
-                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Foreground" Value="white"/>
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="DataGridColumnHeader">
@@ -199,7 +315,7 @@
                                             <Border x:Name="border"
                               BorderBrush="White"
                               BorderThickness="2"
-                              Background="#0D0D0D"
+                              Background="#FFBE60BF"
                               CornerRadius="5 0 0 0">
                                                 <ContentPresenter HorizontalAlignment="Center"/>
                                             </Border>
@@ -210,13 +326,13 @@
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Address" Binding="{Binding Address}" Width="*">
+                <DataGridTextColumn Header="Адрес" Binding="{Binding Address}" Width="*">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="Background" Value="#0D0D0D"/>
                             <Setter Property="BorderBrush" Value="White"/>
                             <Setter Property="BorderThickness" Value="2"/>
-                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Foreground" Value="white"/>
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="DataGridColumnHeader">
@@ -224,7 +340,7 @@
                                             <Border x:Name="border"
                               BorderBrush="White"
                               BorderThickness="2"
-                              Background="#0D0D0D"
+                              Background="#FFBE60BF"
                               CornerRadius="0 5 0 0">
                                                 <ContentPresenter HorizontalAlignment="Center"/>
                                             </Border>
@@ -236,10 +352,15 @@
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
             </DataGrid.Columns>
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Style>
+            </DataGrid.RowStyle>
         </DataGrid>
 
         <Label Style="{DynamicResource LabelStyle}" Content="Выбросы" Grid.Row="3"/>
-        <DataGrid x:Name="ListEmissions" Grid.Row="4" AutoGenerateColumns="False">
+        <DataGrid x:Name="ListEmissions" Grid.Row="4" AutoGenerateColumns="False" Style="{DynamicResource DataGridStyle1}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Source name" Binding="{Binding Source.Name}" Width="*">
                     <DataGridTextColumn.HeaderStyle>
@@ -255,7 +376,7 @@
                                             <Border x:Name="border"
                               BorderBrush="White"
                               BorderThickness="2"
-                              Background="#0D0D0D"
+                              Background="#FFBE60BF"
                               CornerRadius="5 0 0 0">
                                                 <ContentPresenter HorizontalAlignment="Center"/>
                                             </Border>
@@ -280,7 +401,7 @@
                                             <Border x:Name="border"
                               BorderBrush="White"
                               BorderThickness="2"
-                              Background="#0D0D0D">
+                              Background="#FFBE60BF">
                                                 <ContentPresenter HorizontalAlignment="Center"/>
                                             </Border>
                                         </Border>
@@ -304,7 +425,7 @@
                                             <Border x:Name="border"
                               BorderBrush="White"
                               BorderThickness="2"
-                              Background="#0D0D0D">
+                              Background="#FFBE60BF">
                                                 <ContentPresenter HorizontalAlignment="Center"/>
                                             </Border>
                                         </Border>
@@ -325,7 +446,7 @@
                                 <Setter.Value>
                                     <ControlTemplate TargetType="DataGridColumnHeader">
                                         <Border Background="Transparent" BorderThickness="0">
-                                            <Border x:Name="border" BorderBrush="White" BorderThickness="2" Background="#0D0D0D" CornerRadius="0 5 0 0">
+                                            <Border x:Name="border" BorderBrush="White" BorderThickness="2" Background ="#FFBE60BF" CornerRadius="0 5 0 0">
                                                 <ContentPresenter HorizontalAlignment="Center"/>
                                             </Border>
                                         </Border>
@@ -336,6 +457,11 @@
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
             </DataGrid.Columns>
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Style>
+            </DataGrid.RowStyle>
         </DataGrid>
     </Grid>
 </Window>

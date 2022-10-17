@@ -1,4 +1,5 @@
 ﻿using BabkaMonitorTWO.DB_classes;
+using BabkaMonitorTWO.Emissions;
 using BabkaMonitorTWO.Source;
 using System;
 using System.Collections.Generic;
@@ -109,6 +110,18 @@ namespace BabkaMonitorTWO
         {
             KillSource killSource = new KillSource(db, this) ;
             killSource.Show();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            EditSource editSource = new EditSource(db, this);
+            editSource.Show();
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            KillEmission killEmission = new KillEmission(db, this);
+            killEmission.Show();
         }
     }
 }

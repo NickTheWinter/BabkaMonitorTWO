@@ -27,20 +27,22 @@ namespace BabkaMonitorTWO.Emissions
             InitializeComponent();
             mainWindow = _window;
             db = context;
-        }
-        private void Name_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (Name.Text == "Название выброса")
-            {
-                Name.Text = "";
-            }
-        }
 
-        private void Name_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (Name.Text == "")
+            foreach (var item in db.Emissions)
             {
-                Name.Text = "Название выброса";
+                ComboBox_source.Items.Add(item.Source.Name);
+            }
+            foreach (var item in db.Emissions)
+            {
+                ComboBox_count.Items.Add(item.Count);
+            }
+            foreach (var item in db.Emissions)
+            {
+                ComboBox_text.Items.Add(item.Text);
+            }
+            foreach (var item in db.Emissions)
+            {
+                ComboBox_date.Items.Add(item.Date);
             }
         }
         private void CancelEmission_Click(object sender, RoutedEventArgs e)
@@ -48,12 +50,21 @@ namespace BabkaMonitorTWO.Emissions
             this.Close();
         }
 
-        private void KillEmission_Click(object sender, RoutedEventArgs e)
+        private void KillButtonEmission_Click(object sender, RoutedEventArgs e)
         {
-            BabkaMonitorTWO.DB_classes.Source source = db.Sources.Where(x => x.Name == Name.Text).FirstOrDefault();
-            db.Sources.Remove(source);
+            //BabkaMonitorTWO.DB_classes.Emission emission = db.Sources.Where(x => x.Name == Name.Text).FirstOrDefault();
+            //db.Sources.Remove(emission);
+            //db.SaveChanges();
+            //mainWindow.UpdateSource(false);
+        }
+
+        private void KillEmissionn_Click(object sender, RoutedEventArgs e)
+        {
+            BabkaMonitorTWO.DB_classes.Emission emission = db.Emissions.Where(x => x.Source.Name == ComboBox_source.SelectedValue).Where(x=> x.Count == ComboBox_count.SelectedValue).Where( 
+            x=> x.Text == ComboBox_text.SelectedValue).FirstOrDefault();
+            db.Remove(emission);
             db.SaveChanges();
-            mainWindow.UpdateSource(false);
+            mainWindow.UpdateEmission(false);
         }
     }
 }
