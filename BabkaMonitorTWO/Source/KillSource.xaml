@@ -68,11 +68,11 @@
         <ComboBox Background="#8C274C" Opacity="0.5" x:Name="Name" Margin="10 40" FontSize="20" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" IsEditable="False" IsReadOnly="True" OpacityMask="#FF8C274C"/>
         <Button x:Name="KillSouce" FontSize="20" Grid.Row="3" Grid.Column="0" Content="Удалить" Style="{DynamicResource ButtonStyleDataGrid}" Click="KillSouce_Click"/>
         <Button x:Name="CancelSource" FontSize="20" Grid.Row="3" Grid.Column="1" Content="Отменить" Style="{DynamicResource ButtonStyleDataGrid}" Click="CancelSource_Click"/>
-        <Border Grid.Row="0" Grid.Column="1" CornerRadius="100">
-            <Border.Background >
-                <ImageBrush x:Name="logo" ImageSource="/image/Zero Two mega logo.png" Stretch="UniformToFill"/>
-            </Border.Background>
-        </Border>
+        <Ellipse Grid.ColumnSpan="2" Width="2in">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="/image/Zero Two mega logo.png"/>
+            </Ellipse.Fill>
+        </Ellipse>
 
     </Grid>
 </Window>
