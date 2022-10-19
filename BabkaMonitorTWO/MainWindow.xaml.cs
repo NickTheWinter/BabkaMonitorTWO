@@ -123,5 +123,41 @@ namespace BabkaMonitorTWO
             KillEmission killEmission = new KillEmission(db, this);
             killEmission.Show();
         }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            EditEmission editEmission = new EditEmission(db, this);
+            editEmission.Show();
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(
+                $"Мин.выбросы = {db.Emissions.Min(x=>x.Count)}",
+                "Минимальные выбросы",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information
+                );
+        }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            /*MessageBox.Show(
+                $"Ср.выбросы = {db.Emissions.Average(x => x.Count)}",
+                "Средние выбросы",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information
+                );*/
+        }
+
+        private void Button_Click_8(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(
+                $"Макс.выбросы = {db.Emissions.Max(x => x.Count)}",
+                "Максимальные выбросы",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information
+                );
+        }
     }
 }

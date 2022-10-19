@@ -287,6 +287,7 @@
             </Grid.RowDefinitions>
             <Button Style="{DynamicResource ButtonStyleDataGrid}" Grid.Row="0" Content="Добавить выбросы" Height="84" Margin="20,10,20,0" VerticalAlignment="Top" Click="Button_Click_1" />
             <Button Style="{DynamicResource ButtonStyleDataGrid}" Grid.Row="1" Content="Удалить выбросы" Click="Button_Click_4"/>
+            <Button Style="{DynamicResource ButtonStyleDataGrid}" Grid.Row="2" Content="Редактировать выбросы" Click="Button_Click_5"/>
         </Grid>
         <Grid Grid.Row="5">
             <Grid.ColumnDefinitions>
@@ -294,9 +295,9 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Style="{DynamicResource ButtonStyleDataGrid}" FontSize="34" Grid.Column="0" Content="Мин. выбросы"/>
-            <Button Style="{DynamicResource ButtonStyleDataGrid}" FontSize="34" Grid.Column="1" Content="Средние выбросы"/>
-            <Button Style="{DynamicResource ButtonStyleDataGrid}" FontSize="34" Grid.Column="2" Content="Макс. выбросы"/>
+            <Button Style="{DynamicResource ButtonStyleDataGrid}" FontSize="34" Grid.Column="0" Content="Мин. выбросы" Click="Button_Click_6"/>
+            <Button Style="{DynamicResource ButtonStyleDataGrid}" FontSize="34" Grid.Column="1" Content="Средние выбросы" Click="Button_Click_7"/>
+            <Button Style="{DynamicResource ButtonStyleDataGrid}" FontSize="34" Grid.Column="2" Content="Макс. выбросы" Click="Button_Click_8"/>
         </Grid>
         <Label Style="{DynamicResource LabelStyle}" Content="Источник выбросов" Grid.Row="1"/>
         <DataGrid Style="{DynamicResource DataGridStyle1}" x:Name="ListSources" Grid.Row="2" AutoGenerateColumns="False">
@@ -362,7 +363,7 @@
         <Label Style="{DynamicResource LabelStyle}" Content="Выбросы" Grid.Row="3"/>
         <DataGrid x:Name="ListEmissions" Grid.Row="4" AutoGenerateColumns="False" Style="{DynamicResource DataGridStyle1}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Source name" Binding="{Binding Source.Name}" Width="*">
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="0.3*">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="Background" Value="Transparent"/>
@@ -378,6 +379,31 @@
                               BorderThickness="2"
                               Background="#FFBE60BF"
                               CornerRadius="5 0 0 0">
+                                                <ContentPresenter HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Source name" Binding="{Binding Source.Name}" Width="*">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="White"/>
+                            <Setter Property="BorderThickness" Value="2"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="DataGridColumnHeader">
+                                        <Border Background="Transparent" BorderThickness="0">
+                                            <Border x:Name="border"
+                              BorderBrush="White"
+                              BorderThickness="2"
+                              Background="#FFBE60BF"
+                              CornerRadius="0 0 0 0">
                                                 <ContentPresenter HorizontalAlignment="Center"/>
                                             </Border>
                                         </Border>
