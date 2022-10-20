@@ -132,5 +132,6 @@ namespace BabkaMonitorTWO
             DataGrid grid = (DataGrid)sender;
             grid.SelectedItems.Clear();
         }
+
     }
 }

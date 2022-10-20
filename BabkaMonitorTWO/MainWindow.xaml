@@ -424,7 +424,7 @@
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Source name" Binding="{Binding Source.Name}" Width="*">
+                <DataGridTextColumn Header="Название источника" Binding="{Binding Source.Name}" Width="*">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="Background" Value="Transparent"/>
@@ -449,7 +449,7 @@
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Count" Binding="{Binding Count}" Width="*">
+                <DataGridTextColumn Header="Количество" Binding="{Binding Count}" Width="*">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="Background" Value="Transparent"/>
@@ -473,7 +473,7 @@
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Text" Binding="{Binding Text}" Width="*">
+                <DataGridTextColumn Header="Текст" Binding="{Binding Text}" Width="*">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="Background" Value="Transparent"/>
@@ -497,7 +497,7 @@
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="*">
+                <DataGridTextColumn Header="Дата" Binding="{Binding Date}" Width="*">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="Background" Value="#0D0D0D"/>
