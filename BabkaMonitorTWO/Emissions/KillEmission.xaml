@@ -136,23 +136,17 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2.4*"/>
-            <RowDefinition/>
-            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <ComboBox Background="#8C274C" Opacity="0.5" x:Name="ComboBox_source" Margin="10 20"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  IsReadOnly="True" OpacityMask="#FF8C274C"/>
-        <ComboBox Background="#8C274C" Opacity="0.5" x:Name="ComboBox_count" Margin="10 20"  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  IsReadOnly="True" OpacityMask="#FF8C274C"/>
-        <ComboBox Background="#8C274C" Opacity="0.5" x:Name="ComboBox_text" Margin="10 20"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  IsReadOnly="True" OpacityMask="#FF8C274C"/>
-        <ComboBox Background="#8C274C" Opacity="0.5" x:Name="ComboBox_date" Margin="10 20"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  IsReadOnly="True" OpacityMask="#FF8C274C"/>
+        <ComboBox Background="#8C274C" Opacity="0.5" x:Name="Combobox_id" VerticalAlignment="Center" Margin="10 0" Padding="20"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  IsReadOnly="True" OpacityMask="#FF8C274C"/>
         <Ellipse Grid.ColumnSpan="2" Width="2in">
             <Ellipse.Fill>
                 <ImageBrush ImageSource="/image/Zero Two mega logo.png"/>
             </Ellipse.Fill>
         </Ellipse>
-        <Button x:Name="KillEmissionn" FontSize="20" Grid.Row="6" Grid.Column="0" Content="Удалить" Style="{DynamicResource ButtonStyleDataGrid}" Click="KillEmissionn_Click"/>
-        <Button x:Name="CancelEmission" FontSize="20" Grid.Row="6" Grid.Column="1" Content="Отменить" Style="{DynamicResource ButtonStyleDataGrid}" Click="CancelEmission_Click"/>
+        <Button x:Name="KillEmissionn" FontSize="20" Margin="10 40" Grid.Row="6" Grid.Column="0" Content="Удалить" Style="{DynamicResource ButtonStyleDataGrid}" Click="KillButtonEmission_Click"/>
+        <Button x:Name="CancelEmission" FontSize="20" Margin="10 40" Grid.Row="6" Grid.Column="1" Content="Отменить" Style="{DynamicResource ButtonStyleDataGrid}" Click="CancelEmission_Click"/>
     </Grid>
 </Window>

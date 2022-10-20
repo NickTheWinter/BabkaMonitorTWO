@@ -30,19 +30,7 @@ namespace BabkaMonitorTWO.Emissions
 
             foreach (var item in db.Emissions)
             {
-                ComboBox_source.Items.Add(item.Source.Name);
-            }
-            foreach (var item in db.Emissions)
-            {
-                ComboBox_count.Items.Add(item.Count);
-            }
-            foreach (var item in db.Emissions)
-            {
-                ComboBox_text.Items.Add(item.Text);
-            }
-            foreach (var item in db.Emissions)
-            {
-                ComboBox_date.Items.Add(item.Date);
+                Combobox_id.Items.Add(item.Id);
             }
         }
         private void CancelEmission_Click(object sender, RoutedEventArgs e)
@@ -52,20 +40,10 @@ namespace BabkaMonitorTWO.Emissions
 
         private void KillButtonEmission_Click(object sender, RoutedEventArgs e)
         {
-            //BabkaMonitorTWO.DB_classes.Emission emission = db.Sources.Where(x => x.Name == Name.Text).FirstOrDefault();
-            //db.Sources.Remove(emission);
-            //db.SaveChanges();
-            //mainWindow.UpdateSource(false);
-        }
-
-        private void KillEmissionn_Click(object sender, RoutedEventArgs e)
-        {
-            float selectedValue = float.Parse(ComboBox_count.SelectedValue.ToString());
-            Emission emission = db.Emissions.Where(x => x.Source.Name == ComboBox_source.SelectedValue).Where(x=> x.Count == selectedValue).Where( 
-            x=> x.Text == ComboBox_text.SelectedValue).FirstOrDefault();
-            db.Remove(emission);
+            Emission emission = db.Emissions.Where(x => x.Id.ToString() == Combobox_id.SelectedValue).FirstOrDefault();
+            db.Emissions.Remove(emission);
             db.SaveChanges();
-            mainWindow.UpdateEmission(false);
+            mainWindow.UpdateSource(false);
         }
     }
 }

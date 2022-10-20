@@ -74,13 +74,26 @@ namespace BabkaMonitorTWO.Emissions
 
         private void EditEmissionn_Click(object sender, RoutedEventArgs e)
         {
-            Emission emission = db.Emissions.Where(x => x.Id.ToString() == Combobox_id.SelectedValue).FirstOrDefault();
-            emission.Text = Text.Text;
-            emission.Source = db.Sources.Where(x => x.Name == ComboBox_location.SelectedValue).FirstOrDefault();
-            emission.Count = float.Parse(Count.Text);
-            emission.Date = DateTime.Parse(Date.Text);
-            db.SaveChanges();
-            mainWindow.UpdateEmission(false);
+            try
+            {
+                Emission emission = db.Emissions.Where(x => x.Id.ToString() == Combobox_id.SelectedValue).FirstOrDefault();
+                emission.Text = Text.Text;
+                emission.Source = db.Sources.Where(x => x.Name == ComboBox_location.SelectedValue).FirstOrDefault();
+                emission.Count = float.Parse(Count.Text);
+                emission.Date = DateTime.Parse(Date.Text);
+                db.SaveChanges();
+                mainWindow.UpdateEmission(false);
+            }
+            catch
+            {
+              MessageBox.Show(
+              $"Введены не корректные данные",
+              "Неверный формат",
+              MessageBoxButton.OK,
+              MessageBoxImage.Error
+              );
+            }
+
         }
     }
 }
