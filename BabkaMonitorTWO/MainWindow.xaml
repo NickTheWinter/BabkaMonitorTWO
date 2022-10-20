@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BabkaMonitorTWO"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1080" Width="1920" Icon="image/Zero Two mega icon.ico">
+        Title="MainWindow" Height="1080" Width="1920" Icon="image/Zero Two mega icon.ico" MinHeight="720" MinWidth="1080">
     <Window.Background>
         <ImageBrush ImageSource="image/Zero Two top anime girl in the World.png"/>
     </Window.Background>
@@ -263,11 +263,11 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" CornerRadius="100" Width="200">
-                <Border.Background>
-                    <ImageBrush x:Name="logo" ImageSource="image/Zero Two mega logo.png" Stretch="UniformToFill"/>
-                </Border.Background>
-            </Border>
+            <Ellipse Grid.ColumnSpan="2" Width="2.5in">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="/image/Zero Two mega logo.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
         </Grid>
         <Grid Grid.Column="1" Grid.Row="2">
             <Grid.RowDefinitions>
@@ -297,7 +297,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button Style="{DynamicResource ButtonStyleDataGrid}" Grid.Row="0" Height="84" Margin="20,10,20,0" VerticalAlignment="Top" Click="Button_Click_1" >
+            <Button Style="{DynamicResource ButtonStyleDataGrid}" Grid.Row="0" VerticalAlignment="Top" Click="Button_Click_1" >
                 <Viewbox>
                     <TextBlock Text="Добавить выбросы"/>
                 </Viewbox>
@@ -336,7 +336,7 @@
             </Button>
         </Grid>
         <Label Style="{DynamicResource LabelStyle}" Content="Источник выбросов" Grid.Row="1"/>
-        <DataGrid Style="{DynamicResource DataGridStyle1}" x:Name="ListSources" Grid.Row="2" AutoGenerateColumns="False">
+        <DataGrid Style="{DynamicResource DataGridStyle1}" x:Name="ListSources" Grid.Row="2" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Name}" Width="*">
                     <DataGridTextColumn.HeaderStyle>
