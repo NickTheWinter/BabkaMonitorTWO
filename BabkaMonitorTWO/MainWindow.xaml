@@ -336,7 +336,7 @@
             </Button>
         </Grid>
         <Label Style="{DynamicResource LabelStyle}" Content="Источник выбросов" Grid.Row="1"/>
-        <DataGrid Style="{DynamicResource DataGridStyle1}" x:Name="ListSources" Grid.Row="2" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid Style="{DynamicResource DataGridStyle1}" x:Name="ListSources" Grid.Row="2" IsReadOnly="True" AutoGenerateColumns="False" SelectedCellsChanged="DGExpand_SelectedCellsChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Name}" Width="*">
                     <DataGridTextColumn.HeaderStyle>
@@ -397,7 +397,7 @@
         </DataGrid>
 
         <Label Style="{DynamicResource LabelStyle}" Content="Выбросы" Grid.Row="3"/>
-        <DataGrid x:Name="ListEmissions" Grid.Row="4" AutoGenerateColumns="False" Style="{DynamicResource DataGridStyle1}">
+        <DataGrid x:Name="ListEmissions" Grid.Row="4" AutoGenerateColumns="False" IsReadOnly="True" Style="{DynamicResource DataGridStyle1}" SelectedCellsChanged="DGExpand_SelectedCellsChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="0.3*">
                     <DataGridTextColumn.HeaderStyle>

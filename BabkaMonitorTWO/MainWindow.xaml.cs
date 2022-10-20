@@ -110,12 +110,12 @@ namespace BabkaMonitorTWO
 
         private void Button_Click_7(object sender, RoutedEventArgs e)
         {
-            /*MessageBox.Show(
+            MessageBox.Show(
                 $"Ср.выбросы = {db.Emissions.Average(x => x.Count)}",
                 "Средние выбросы",
                 MessageBoxButton.OK,
                 MessageBoxImage.Information
-                );*/
+                );
         }
 
         private void Button_Click_8(object sender, RoutedEventArgs e)
@@ -126,6 +126,11 @@ namespace BabkaMonitorTWO
                 MessageBoxButton.OK,
                 MessageBoxImage.Information
                 );
+        }
+        private void DGExpand_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            DataGrid grid = (DataGrid)sender;
+            grid.SelectedItems.Clear();
         }
     }
 }
