@@ -10,10 +10,10 @@ namespace BabkaMonitorTWO.DB_classes
     {
         public int Id { get; set; }
         public Source Source { get; set; }
-        public string? Count { get; set; }
+        public double? Count { get; set; }
         public string? Text { get; set; }
         public DateTime? Date { get; set; }
-        public Emission(Source _source, string _count, string _text, DateTime date)
+        public Emission(Source _source, float _count, string _text, DateTime date)
         {
             Source = _source;
             Count = _count;

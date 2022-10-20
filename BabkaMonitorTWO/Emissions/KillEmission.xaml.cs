@@ -60,7 +60,8 @@ namespace BabkaMonitorTWO.Emissions
 
         private void KillEmissionn_Click(object sender, RoutedEventArgs e)
         {
-            Emission emission = db.Emissions.Where(x => x.Source.Name == ComboBox_source.SelectedValue).Where(x=> x.Count == ComboBox_count.SelectedValue).Where( 
+            float selectedValue = float.Parse(ComboBox_count.SelectedValue.ToString());
+            Emission emission = db.Emissions.Where(x => x.Source.Name == ComboBox_source.SelectedValue).Where(x=> x.Count == selectedValue).Where( 
             x=> x.Text == ComboBox_text.SelectedValue).FirstOrDefault();
             db.Remove(emission);
             db.SaveChanges();

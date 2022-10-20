@@ -77,7 +77,7 @@ namespace BabkaMonitorTWO.Emissions
             Emission emission = db.Emissions.Where(x => x.Id.ToString() == Combobox_id.SelectedValue).FirstOrDefault();
             emission.Text = Text.Text;
             emission.Source = db.Sources.Where(x => x.Name == ComboBox_location.SelectedValue).FirstOrDefault();
-            emission.Count = Count.Text;
+            emission.Count = float.Parse(Count.Text);
             emission.Date = DateTime.Parse(Date.Text);
             db.SaveChanges();
             mainWindow.UpdateEmission(false);

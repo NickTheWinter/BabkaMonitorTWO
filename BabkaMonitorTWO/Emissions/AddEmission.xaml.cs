@@ -57,7 +57,7 @@ namespace BabkaMonitorTWO
         private void AddEmissionn_Click(object sender, RoutedEventArgs e)
         {
             DB_classes.Source source = db.Sources.Where(x => x.Name == ComboBox_location.SelectedValue).FirstOrDefault();
-            Emission emission = new Emission(source, Count.Text, Text.Text, DateTime.Parse(Date.Text));
+            Emission emission = new Emission(source, float.Parse(Count.Text), Text.Text, DateTime.Parse(Date.Text));
             db.Emissions.Add(emission);
             db.SaveChanges();
             mainWindow.UpdateEmission(true);
